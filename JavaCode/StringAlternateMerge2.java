@@ -39,48 +39,47 @@ merged: a p b q c   d
 
 public class StringAlternateMerge2 {
     public static void main(String[] args) {
+        // Input strings
         String word1 = "abc";
         String word2 = "defgh";
 
+        // Merge the input strings alternately
         String merged = mergeAlternately(word1, word2);
+
+        // Print the merged string
         System.out.println("Merged string: " + merged);
     }
 
     public static String mergeAlternately(String word1, String word2) {
+        // Determine shorter and longer strings
         String shorter = word1;
-        String longer =  word2;
-           if(word1.length() > word2.length()){
-                longer = word1;
-               shorter = word2;
-           }
-           else{
-                longer = word2;
-                shorter = word1;
-           }
+        String longer = word2;
+        if (word1.length() > word2.length()) {
+            longer = word1;
+            shorter = word2;
+        } else {
+            longer = word2;
+            shorter = word1;
+        }
 
+        // Initialize the result string
+        String result = "";
 
+        // Iterate over indices of characters in shorter string
+        for (int i = 0; i / 2 < shorter.length(); i++) {
+            if (i % 2 == 0) {
+                result += word1.charAt(i / 2); // Take a character from word1
+            } else {
+                result += word2.charAt(i / 2); // Take a character from word2
+            }
+        }
 
+        // Append remaining characters from longer string if there's a length difference
+        if (word1.length() != word2.length()) {
+            result += longer.substring(shorter.length());
+        }
 
-       String result = "";
-       for (int i = 0; i/2 < shorter.length(); i++){
-           if (i % 2 == 0) {
-               result += word1.charAt(i/2);
-           }
-           else{
-               result += word2.charAt(i/2);
-
-           }
-
-       }
-       
-       
-       if (word1.length() != word2.length()){
-           result += longer.substring(shorter.length());
-
-       }
-
-
-
-       return result;
-      
-}}
+        // Return the merged string
+        return result;
+    }
+}

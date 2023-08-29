@@ -39,28 +39,45 @@ merged: a p b q c   d
 
 public class StringAlternateMerge {
     public static void main(String[] args) {
+        // Input strings to be merged alternately
         String word1 = "abc";
         String word2 = "defgh";
 
+        // Merge the input strings alternately
         String merged = mergeAlternately(word1, word2);
+        
+        // Print the merged string
         System.out.println("Merged string: " + merged);
     }
 
+    /**
+     * Merges two input strings alternately character by character.
+     *
+     * @param word1 The first input string
+     * @param word2 The second input string
+     * @return A string containing characters merged alternately from both input strings
+     */
     public static String mergeAlternately(String word1, String word2) {
+        // Calculate the total size of the merged string
         int size = word1.length() + word2.length();
-        StringBuilder result = new StringBuilder();
-        int count = 0;
+        StringBuilder result = new StringBuilder(); // To store the merged result
+        int count = 0; // Counter for tracking the current position in the strings
         
+        // Continue merging until the result size matches the calculated size
         while (result.length() != size) {
+            // Append a character from word1 if available
             if (count < word1.length()) {
                 result.append(word1.charAt(count));
             }
+            
+            // Append a character from word2 if available
             if (count < word2.length()) {
                 result.append(word2.charAt(count));
             }
-            count++;
+            
+            count++; // Move to the next position in the strings
         }
         
-        return result.toString();
+        return result.toString(); // Return the merged result
     }
 }

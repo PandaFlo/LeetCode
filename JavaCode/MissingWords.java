@@ -28,29 +28,34 @@ Constraints
 
 
 public class MissingWords {
+    // Method to find missing words in string s that are not present in string t
     public static List<String> missingWords(String s, String t) {
-        List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<>(); // List to store missing words
         
-        String[] sWords = s.split(" ");
-        String[] tWords = t.split(" ");
+        // Splitting input strings into arrays of words
+        String[] sWords = s.split(" "); // Words in string s
+        String[] tWords = t.split(" "); // Words in string t
         
-        int tIndex = 0;
+        int tIndex = 0; // Index to track the position in string t
+        
+        // Loop through words in string s
         for (int i = 0; i < sWords.length; i++) {
+            // Check if there are words left in string t and the current words match
             if (tIndex < tWords.length && sWords[i].equals(tWords[tIndex])) {
-                tIndex++;
+                tIndex++; // Move to the next word in string t
             } else {
-                result.add(sWords[i]);
+                result.add(sWords[i]); // Add the word to the result list
             }
         }
         
-        return result;
+        return result; // Return the list of missing words
     }
     
     public static void main(String[] args) {
-        String s = "I like cheese";
-        String t = "like";
+        String s = "I like cheese"; // Original string
+        String t = "like"; // String with words to be excluded
         
-        List<String> missing = missingWords(s, t);
+        List<String> missing = missingWords(s, t); // Get missing words
         System.out.println(missing); // Output: [I, cheese]
     }
 }
