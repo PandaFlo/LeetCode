@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *You are given two strings word1 and word2. 
